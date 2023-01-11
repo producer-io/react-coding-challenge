@@ -28,14 +28,14 @@ We should add a confirmation modal before deactivating a user.
 
 **Design**
 
-Our designer created this simple design, as a note he added that he is still working on a new icon set and can ignore it for the time being. 
+Our designer created this simple design, as a note he added that he is still working on a new icon set and we can ignore it for the time being. 
 
 ![design](https://github.com/producer-io/react-coding-challenge/blob/main/assets/design.png)
 
 **Nice to have**
 
 During out user testing it appears that some user will appreciate to close the modal by using the escape key or by
-clicking outside the modal. As we are on a tight deadline 
+clicking outside the modal. As we are on a tight deadline we should keep this as a nice-to-have.
 
 **Acceptance Critera**
 
