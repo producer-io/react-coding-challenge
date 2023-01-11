@@ -30,7 +30,7 @@ We should add a confirmation modal before deactivating a user.
 
 Our designer created this simple design, as a note he added that he is still working on a new icon set and can ignore it for the time being. 
 
-![design](https://github.com/producer-io/react-coding-challenge/tree/main/assets/design.png)
+![design](https://github.com/producer-io/react-coding-challenge/blob/main/assets/design.png)
 
 **Nice to have**
 
