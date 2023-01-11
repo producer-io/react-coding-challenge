@@ -35,7 +35,7 @@ export const MembersListItem: React.FC<MembersListItemProps> = ({
 
       <td>
         <TextButton
-          text={'Delete'}
+          text={'Deactivate'}
           onClick={handleDelete}
         />
       </td>
