@@ -37,6 +37,10 @@ Our designer created this simple design, as a note he added that he is still wor
 During out user testing it appears that some user will appreciate to close the modal by using the escape key or by
 clicking outside the modal. As we are on a tight deadline we should keep this as a nice-to-have.
 
+**Limitations**
+
+Do not use any additional libraries.
+
 **Acceptance Critera**
 
 - When I click on deactivate in the User list, I should see a confirmation modal
