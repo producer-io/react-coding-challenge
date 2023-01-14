@@ -2,9 +2,10 @@ import React from "react";
 import { createPortal } from "react-dom";
 import styled from "styled-components";
 
-import { TextButton, ElevatedButton } from "../buttons";
+import { DangerButton, SecondaryButton } from "../buttons";
+import { ModalProps } from ".";
 
-export const BasicModal: React.FC<any> = ({
+export const BasicModal: React.FC<ModalProps> = ({
  title,
  content,
  primaryAction,
@@ -19,15 +20,14 @@ export const BasicModal: React.FC<any> = ({
    <BasicModalWrapper>
     <ModalContent>
      <ModalTitle>{title}</ModalTitle>
-
      {content}
     </ModalContent>
     <ModalFooter>
-     {secondaryAction && (
-      <ElevatedButton text={secondaryText} onClick={secondaryOnClick} />
+     {!!secondaryAction && (
+      <SecondaryButton text={secondaryText!} onClick={secondaryOnClick!} />
      )}
      {primaryAction && (
-      <TextButton text={primaryText} onClick={primaryOnClick} />
+      <DangerButton text={primaryText} onClick={primaryOnClick}/>
      )}
     </ModalFooter>
    </BasicModalWrapper>
@@ -51,7 +51,9 @@ const BasicModalWrapper = styled.div`
  display: flex;
  flex-direction: column;
  background-color: white;
- border: 1px solid black;
+ -webkit-box-shadow: 6px 8px 40px -14px rgba(0,0,0,0.63);
+ -moz-box-shadow: 6px 8px 40px -14px rgba(0,0,0,0.63);
+ box-shadow: 6px 8px 40px -14px rgba(0,0,0,0.63);
  border-radius: 0.5rem;
  max-width: 30rem;
 `;
@@ -59,18 +61,21 @@ const BasicModalWrapper = styled.div`
 const ModalTitle = styled.h3`
  display: flex;
  margin-bottom: 0.5rem;
+ color: black;
 `;
 
 const ModalContent = styled.div`
  display: flex;
  flex-direction: column;
  padding: 1.25rem 1.25rem 0.75rem;
+ color: var(--color-gray-400);
 `;
 
 const ModalFooter = styled.div`
  background-color: #fafafb;
  display: flex;
  justify-content: end;
- padding: 0.5rem 1rem;
+ padding: 0.75rem 1rem;
+ gap: 0.75rem;
  border-radius: 0 0 1rem 1rem;
 `;
