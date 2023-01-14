@@ -1,5 +1,7 @@
 import React from 'react';
 import styled from 'styled-components';
+
+import { Button as StyledButton } from './styled-button';
 import {ButtonProps} from './index';
 
 export const TextButton: React.FC<ButtonProps> = ({
@@ -11,12 +13,7 @@ export const TextButton: React.FC<ButtonProps> = ({
   </Button>
 );
 
-const Button = styled.button`
-  border-radius: .8rem;
-  padding: .6rem 1.2rem;
-  font-size: 1rem;
-  font-weight: 500;
-  font-family: inherit;
+const Button = styled(StyledButton)`
   border: none;
   color: var(--color-primary);
   background: none;
