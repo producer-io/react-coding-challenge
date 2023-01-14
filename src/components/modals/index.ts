@@ -7,6 +7,8 @@ export type ModalProps = {
 
   content: string;
 
+  isOpen: boolean;
+
   primaryAction: ButtonProps;
   
   secondaryAction?: ButtonProps;

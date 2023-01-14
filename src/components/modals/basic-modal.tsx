@@ -1,38 +1,44 @@
-import React from "react";
-import { createPortal } from "react-dom";
-import styled from "styled-components";
+import React from 'react';
+import { createPortal } from 'react-dom';
+import styled from 'styled-components';
 
-import { DangerButton, SecondaryButton } from "../buttons";
-import { ModalProps } from ".";
+import { DangerButton, SecondaryButton } from '../buttons';
+import { ModalProps } from '.';
 
 export const BasicModal: React.FC<ModalProps> = ({
  title,
  content,
  primaryAction,
  secondaryAction,
+ isOpen,
 }) => {
  const { text: primaryText, onClick: primaryOnClick } = primaryAction || {};
  const { text: secondaryText, onClick: secondaryOnClick } =
   secondaryAction || {};
 
- return createPortal(
-  <ModalContainer>
-   <BasicModalWrapper>
-    <ModalContent>
-     <ModalTitle>{title}</ModalTitle>
-     {content}
-    </ModalContent>
-    <ModalFooter>
-     {!!secondaryAction && (
-      <SecondaryButton text={secondaryText!} onClick={secondaryOnClick!} />
-     )}
-     {primaryAction && (
-      <DangerButton text={primaryText} onClick={primaryOnClick}/>
-     )}
-    </ModalFooter>
-   </BasicModalWrapper>
-  </ModalContainer>,
-  document.body
+ return (
+  <>
+   {isOpen &&
+    createPortal(
+     <ModalContainer>
+      <BasicModalWrapper>
+       <ModalContent>
+        <ModalTitle>{title}</ModalTitle>
+        {content}
+       </ModalContent>
+       <ModalFooter>
+        {!!secondaryAction && (
+         <SecondaryButton text={secondaryText!} onClick={secondaryOnClick!} />
+        )}
+        {primaryAction && (
+         <DangerButton text={primaryText} onClick={primaryOnClick} />
+        )}
+       </ModalFooter>
+      </BasicModalWrapper>
+     </ModalContainer>,
+     document.body
+    )}
+  </>
  );
 };
 
@@ -51,9 +57,9 @@ const BasicModalWrapper = styled.div`
  display: flex;
  flex-direction: column;
  background-color: white;
- -webkit-box-shadow: 6px 8px 40px -14px rgba(0,0,0,0.63);
- -moz-box-shadow: 6px 8px 40px -14px rgba(0,0,0,0.63);
- box-shadow: 6px 8px 40px -14px rgba(0,0,0,0.63);
+ -webkit-box-shadow: 6px 8px 40px -14px rgba(0, 0, 0, 0.63);
+ -moz-box-shadow: 6px 8px 40px -14px rgba(0, 0, 0, 0.63);
+ box-shadow: 6px 8px 40px -14px rgba(0, 0, 0, 0.63);
  border-radius: 0.5rem;
  max-width: 30rem;
 `;
