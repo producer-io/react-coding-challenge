@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import { createPortal } from 'react-dom';
 import styled from 'styled-components';
 
@@ -11,17 +11,33 @@ export const BasicModal: React.FC<ModalProps> = ({
  primaryAction,
  secondaryAction,
  isOpen,
+ handleClose,
 }) => {
  const { text: primaryText, onClick: primaryOnClick } = primaryAction || {};
  const { text: secondaryText, onClick: secondaryOnClick } =
   secondaryAction || {};
 
+  useEffect(() => {
+    const closeOnEscape = (e: KeyboardEvent) =>
+     e.key === 'Escape' ? handleClose() : null;
+    
+     document.body.addEventListener("keydown", closeOnEscape);
+    
+    return () => {
+      document.body.removeEventListener("keydown", closeOnEscape);
+    };
+  }, [handleClose]);
+  
  return (
   <>
    {isOpen &&
     createPortal(
-     <ModalContainer>
-      <BasicModalWrapper>
+     <ModalContainer onClick={() => {
+      handleClose();
+    }}>
+      <BasicModalWrapper onClick={e => {
+          e.stopPropagation();
+        }}>
        <ModalContent>
         <ModalTitle>{title}</ModalTitle>
         {content}

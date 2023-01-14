@@ -9,6 +9,8 @@ export type ModalProps = {
 
   isOpen: boolean;
 
+  handleClose: () => void;
+
   primaryAction: ButtonProps;
   
   secondaryAction?: ButtonProps;

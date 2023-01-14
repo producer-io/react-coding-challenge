@@ -17,6 +17,11 @@ export const MemberPage = () => {
   memberIdRef.current = memberId;
  };
 
+ const closeModal = () => {
+  memberIdRef.current = undefined;
+  setIsDeactivateModalOpen(false);
+ };
+
  return (
   <>
    <Page
@@ -25,29 +30,24 @@ export const MemberPage = () => {
    >
     <MembersList members={members} onDelete={validateDeactivateUser} />
    </Page>
-
-   {
-    <BasicModal
-     isOpen={isDeactivateModalOpen}
-     title="Deactivate Account"
-     content="Are you sure you want to deactivate your account? All of your data will be
+   <BasicModal
+    isOpen={isDeactivateModalOpen}
+    title="Deactivate Account"
+    content="Are you sure you want to deactivate your account? All of your data will be
    permanently removed. This action cannot be undone."
-     primaryAction={{
-      onClick: () => {
-       deleteMember(memberIdRef.current!);
-       memberIdRef.current = undefined;
-       setIsDeactivateModalOpen(false);
-      },
-      text: 'Deactivate',
-     }}
-     secondaryAction={{
-      onClick: () => {
-       setIsDeactivateModalOpen(false);
-      },
-      text: 'Cancel',
-     }}
-    />
-   }
+    primaryAction={{
+     onClick: () => {
+      deleteMember(memberIdRef.current!);
+      closeModal();
+     },
+     text: 'Deactivate',
+    }}
+    handleClose={closeModal}
+    secondaryAction={{
+     onClick: closeModal,
+     text: 'Cancel',
+    }}
+   />
   </>
  );
 };
