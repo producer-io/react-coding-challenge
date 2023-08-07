@@ -26,6 +26,7 @@ export const MembersList: React.FC<MembersListProps> = ({
     <tbody>
     {members.map(member => (
       <MembersListItem
+      key={member._id}
         member={member}
         onDelete={onDelete}
       />
